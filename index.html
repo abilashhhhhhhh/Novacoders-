@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mathematical Cryptography | Cipher Wheel</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #000428, #004e92);
+    color: #ffffff;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+header h1 {
+    font-size: 2.6rem;
+    color: #00f2ff;
+}
+
+header p {
+    opacity: 0.85;
+    font-size: 1.1rem;
+}
+
+/* Intro Section */
+.intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px 10%;
+    flex-wrap: wrap;
+}
+
+.text {
+    max-width: 500px;
+}
+
+.text h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.text p {
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 12px 24px;      /* height & width spacing */
+    font-size: 16px;         /* text size */
+    font-weight: 500;        /* medium weight */
+    text-transform: capitalize;
+    border: none;
+    border-radius: 12px;     /* rounded corners */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    background-color: #8cc2ff;
+    color: #002244;
+    box-shadow: 0px 0px 8px rgba(140, 194, 255, 0.6);
+}
+
+.btn-secondary:hover {
+    background-color: #6aa9f5;
+    transform: translateY(-3px);
+    box-shadow: 0px 5px 15px rgba(140, 194, 255, 0.8);
+}
+
+.btn-secondary:active {
+    transform: scale(0.97);
+}
+
+/* Cipher Wheel */
+.cipher-wheel {
+    position: relative;
+    width: 240px;
+    height: 240px;
+}
+
+.wheel {
+    position: absolute;
+    border-radius: 50%;
+    border: 4px solid #00f2ff;
+    animation: spin 18s linear infinite;
+}
+
+.outer {
+    width: 240px;
+    height: 240px;
+}
+
+.inner {
+    width: 160px;
+    height: 160px;
+    top: 40px;
+    left: 40px;
+    animation-direction: reverse;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #00f2ff;
+    color: #000;
+    padding: 10px 18px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* Animation */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Process Section */
+.process {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+    padding: 60px 10%;
+}
+
+.box {
+    background: rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0,242,255,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(0,242,255,0.45);
+}
+
+.box h3 {
+    margin-bottom: 15px;
+    color: #00f2ff;
+}
+body {
+    background-color: lightyellow;
+    text-align: center;
+}
+
+h1 {
+    color: green;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    opacity: 0.75;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🔐 Mathematical Cryptography</h1>
+    <p>Cipher Wheel Encryption using Python</p>
+</header>
+
+<section class="intro">
+    <div class="text">
+        <h2>Caesar Cipher Encryption</h2>
+        <p>
+            This project implements a classical Caesar Cipher using
+            modular arithmetic and Python programming. Each character
+            is shifted by a mathematical key to generate a secure
+            encrypted message.
+        </p>
+
+        <br>
+        <p>Click Here To Encrpt the Message !</p><br>
+        <button class="btn-secondary" onclick="window.location.href='1.html'">Encrypt Message</button>
+    </div>
+
+    <div class="cipher-wheel">
+        <div class="wheel outer"></div>
+        <div class="wheel inner"></div>
+        <span class="center">KEY</span>
+    </div>
+</section>
+
+<section class="process">
+    <div class="box">
+        <h3>🔢 Input Message</h3>
+        <p>Plain text entered by the user for encryption.</p>
+    </div>
+
+    <div class="box">
+        <h3>🔁 Shift Key</h3>
+        <p>A numerical key used to shift letters using modulo 26.</p>
+    </div>
+
+    <div class="box">
+        <h3>🔐 Encrypted Text</h3>
+        <p>Secure cipher text generated using Python logic.</p>
+    </div>
+
+    <div class="box">
+        <h3>✅ Verification</h3>
+        <p>Original message is revealed only after key validation.</p>
+    </div>
+</section>
+
+<footer>
+    <p>Technical Expo Project | Cipher Wheel & Python Encryption</p>
+</footer>
+
+</body >
+</html>

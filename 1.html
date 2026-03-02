@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caesar Cipher Tool</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Glass Gradient Card */
+.container {
+    background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1e3c72;
+}
+
+/* Inputs */
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+    background: linear-gradient(145deg, #f5f7fa, #e4e9f2);
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Gradient Button */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #5b86e5, #36d1dc);
+    transform: translateY(-2px);
+}
+
+/* Result Box */
+.result {
+    margin-top: 18px;
+    padding: 12px;
+    background: linear-gradient(145deg, #ffffff, #f1f3f6);
+    border-radius: 8px;
+    font-weight: bold;
+    color: #1e3c72;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🔐 Caesar Cipher Tool</h2>
+
+    <label>Enter Message</label>
+    <textarea id="message" rows="3"></textarea>
+
+    <label>Enter Key (Shift Value)</label>
+    <input type="number" id="key">
+
+    <button onclick="encryptText()">Encrypt</button>
+    <button onclick="decryptText()">Decrypt</button>
+
+    <div class="result" id="output"></div>
+</div>
+
+<script>
+function encrypt(text, key) {
+    key = key % 26;
+    let result = "";
+
+    for (let char of text) {
+        if (/[a-zA-Z]/.test(char)) {
+            let base = (char === char.toUpperCase()) ? 65 : 97;
+            let x = char.charCodeAt(0) - base;
+            result += String.fromCharCode((x + key) % 26 + base);
+        } else {
+            result += char;
+        }
+    }
+
+    return result;
+}
+
+function decrypt(text, key) {
+    return encrypt(text, -key);
+}
+
+function encryptText() {
+    let msg = document.getElementById("message").value;
+    let key = parseInt(document.getElementById("key").value);
+
+    if (isNaN(key)) {
+        alert("Please enter a valid key.");
+        return;
+    }
+
+    let cipher = encrypt(msg, key);
+    document.getElementById("output").innerText = "Encrypted: " + cipher;
+}
+
+function decryptText() {
+    let msg = document.getElementById("message").value;
+    let key = parseInt(document.getElementById("key").value);
+
+    if (isNaN(key)) {
+        alert("Please enter a valid key.");
+        return;
+    }
+
+    let plain = decrypt(msg, key);
+    document.getElementById("output").innerText = "Decrypted: " + plain;
+}
+</script>
+
+</body>
+</html>
